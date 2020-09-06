@@ -24,8 +24,6 @@ class CreateOrganisationsTable extends Migration
             $table->string('period');
             $table->float('service');
             $table->text('rule');
-            $table->foreignId('admin_id');
-            $table->foreign('admin_id')->references('id')->on('admins');
             $table->foreignId('saving_id');
             $table->foreign('saving_id')->references('id')->on('savings');
             $table->timestamps();
