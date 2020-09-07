@@ -86,6 +86,13 @@ class AdminController extends Controller
     public function update(Request $request, Admin $admin)
     {
         //
+        $admins=Admin::find($id);
+        $admins->name=$request->name;
+        $admins->organisation_id=$request->organisation_id;
+        $admins->record_id=$request->record_id;
+        $admins->customer_id=$request->customer_id;
+        $admins->save();
+        return redirect('admins');
     }
 
     /**

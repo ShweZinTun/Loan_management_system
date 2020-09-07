@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Organisation;
 use Illuminate\Http\Request;
-use App\Saving;
 
 class OrganisationController extends Controller
 {
@@ -16,7 +15,8 @@ class OrganisationController extends Controller
     public function index()
     {
         //
-        return view('organisations.index');
+        $organisations=Organisation::all();
+        return view('organisations.index',['organisations'=>$organisations]);
     }
 
     /**
@@ -27,8 +27,7 @@ class OrganisationController extends Controller
     public function create()
     {
         //
-        $savings=Saving::all();
-        return view('organisations.create',['savings'=>$savings]);
+        return view('organisations.create');
     }
 
     /**
@@ -39,7 +38,24 @@ class OrganisationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $period[]=$request->input('period');
+        foreach($period as $periods)
+        {
+            echo $periods;
+        }
+        // $organisations=new Organisation();
+        // $organisations->name=$request->name;
+        // $organisations->address=$request->address;
+        // $organisations->phone=$request->phone;
+        // $organisations->email=$request->email;
+        // $organisations->amount=$request->amount;
+        // $organisations->interest_rate=$request->interest_rate;
+        // $organisations->period=$request->period;
+        // $organisations->service=$request->service;
+        // $organisations->rule=$request->rule;
+        // $organisations->saving=$request->saving;
+        // $organisations->save();
+        // return redirect('organisations');
     }
 
     /**
@@ -59,9 +75,11 @@ class OrganisationController extends Controller
      * @param  \App\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Organisation $organisation)
+    public function edit($id)
     {
         //
+        $organisations=Organisation::find($id);
+        return view('organisations.edit',['organisations'=>Organisation::get(),'organisations'=>$organisations]);
     }
 
     /**
@@ -74,6 +92,19 @@ class OrganisationController extends Controller
     public function update(Request $request, Organisation $organisation)
     {
         //
+        $organisations=Organisation::find();
+        $organisations->name=$request->name;
+        $organisations->address=$request->address;
+        $organisations->phone=$request->phone;
+        $organisations->email=$request->email;
+        $organisations->amount=$request->amount;
+        $organisations->interest_rate=$request->interest_rate;
+        $organisations->period=$request->period;
+        $organisations->service=$request->service;
+        $organisations->rule=$request->rule;
+        $organisations->saving=$request->saving;
+        $organisations->save();
+        return redirect('organisations');
     }
 
     /**
@@ -82,8 +113,10 @@ class OrganisationController extends Controller
      * @param  \App\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Organisation $organisation)
+    public function destroy($id) 
     {
         //
+        Organisation::findOrFail($id)->delete();
+        return redirect('organisations');
     }
 }
