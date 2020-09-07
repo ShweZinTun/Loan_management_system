@@ -15,6 +15,7 @@
 @endif
 </div>
 <div>
+    <h2>Saving</h2>
     <div class="form-group">
     <label for="amount">Amount</label>
     <input type="text" id="amount" name="amount" class="form-control @error('amount') is-invalid @enderror" style="width: 300px;" />
@@ -25,11 +26,13 @@
     
     <div class="form-group">
     <label for="period">Period</label>
-    <input type="text" id="period" name="period" class="form-control" style="width: 300px;" />
-    </div>
-    <div class="form-group">
-    <label for="total_amount">Service</label>
-    <input type="text" id="total_amount" name="total_amount" class="form-control" style="width: 300px;" />
+    <select name="period" class="form-control" style="width:300px;">
+    <option></option>
+    <option value="3">3 months</option>
+    <option value="6">6 months</option>
+    <option value="9">9 months</option>
+    <option value="1">1 year</option>
+    </select>
     </div>
     <div class="form-group">
         <input type="submit" value="Register" />
