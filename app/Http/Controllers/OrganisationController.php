@@ -89,10 +89,10 @@ class OrganisationController extends Controller
      * @param  \App\Organisation  $organisation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Organisation $organisation)
+    public function update(Request $request, $id)
     {
         //
-        $organisations=Organisation::find();
+        $organisations=Organisation::find($if);
         $organisations->name=$request->name;
         $organisations->address=$request->address;
         $organisations->phone=$request->phone;
