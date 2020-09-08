@@ -15,6 +15,7 @@
         <th>Service</th>
         <th>Rule</th>
         <th>Saving</th>
+        <th>Action</th>
     </thead>
     <tbody>
         @foreach($organisations as $organisation)

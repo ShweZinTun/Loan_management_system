@@ -37,25 +37,23 @@ class OrganisationController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $period[]=$request->input('period');
-        foreach($period as $periods)
-        {
-            echo $periods;
-        }
-        // $organisations=new Organisation();
-        // $organisations->name=$request->name;
-        // $organisations->address=$request->address;
-        // $organisations->phone=$request->phone;
-        // $organisations->email=$request->email;
-        // $organisations->amount=$request->amount;
-        // $organisations->interest_rate=$request->interest_rate;
-        // $organisations->period=$request->period;
-        // $organisations->service=$request->service;
-        // $organisations->rule=$request->rule;
-        // $organisations->saving=$request->saving;
-        // $organisations->save();
-        // return redirect('organisations');
+    { $organisations=new Organisation();
+      
+      
+            $organisations->period=implode(',', $request->period);
+      
+        $organisations->name=$request->name;
+        $organisations->address=$request->address;
+        $organisations->phone=$request->phone;
+        $organisations->email=$request->email;
+        $organisations->amount=$request->amount;
+        $organisations->interest_rate=$request->interest_rate;
+       
+        $organisations->service=$request->service;
+        $organisations->rule=$request->rule;
+        $organisations->saving=$request->saving;
+        $organisations->save();
+        return redirect('organisations');
     }
 
     /**
@@ -79,7 +77,7 @@ class OrganisationController extends Controller
     {
         //
         $organisations=Organisation::find($id);
-        return view('organisations.edit',['organisations'=>Organisation::get(),'organisations'=>$organisations]);
+        return view('organisations.edit',['organisations'=>$organisations]);
     }
 
     /**
@@ -92,14 +90,19 @@ class OrganisationController extends Controller
     public function update(Request $request, $id)
     {
         //
+<<<<<<< HEAD
         $organisations=Organisation::find($if);
+=======
+        $organisations=Organisation::find($id);
+        $organisations->period=implode(',', $request->period);
+>>>>>>> 41a5480313a9f0b78050d99fb15b997aa8c77538
         $organisations->name=$request->name;
         $organisations->address=$request->address;
         $organisations->phone=$request->phone;
         $organisations->email=$request->email;
         $organisations->amount=$request->amount;
         $organisations->interest_rate=$request->interest_rate;
-        $organisations->period=$request->period;
+        //$organisations->period=$request->period;
         $organisations->service=$request->service;
         $organisations->rule=$request->rule;
         $organisations->saving=$request->saving;

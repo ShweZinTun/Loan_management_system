@@ -14,10 +14,10 @@
     </div>
 @endif
 </div>
-<div>
+ <div>
     <div class="form-group">
     <label for="name">Name</label>
-    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" style="width: 400px;" />
+    <input type="text" id="name" name="name" class="form-control @error('name') is-invalid @enderror" style="width: 500px;" />
     @error('name')
     <div class="alert alert-danger">{{ $message }}</div>
     @enderror
@@ -52,7 +52,7 @@
     <label for="period">Period</label>
     <div class="form-check">
     <label class="form-check-label">
-    <input type="checkbox" class="form-check-input" id="period" name="period[]" value="3">3 months
+   <input type="checkbox" class="form-check-input" id="period" name="period[]" value="3">3 months
     </lable>
     </div>
     <div class="form-check">
